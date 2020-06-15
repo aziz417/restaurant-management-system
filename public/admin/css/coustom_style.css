@@ -2,6 +2,9 @@ html, body{
     
     color: #000!important;
 }
+.actionCenter {
+    text-align: center;
+}
 
 .action_btn {
     margin-bottom: 0px!important;

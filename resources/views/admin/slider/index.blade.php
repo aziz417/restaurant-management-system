@@ -31,41 +31,42 @@
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th class="actionCenter">Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-           
+      
+            @foreach($sliders as $slider)
+                <tr>
+                    <td><?php echo $slider->title ?></td>
+                    <td><?php echo $slider->avatar ?></td>
+                    <td><?php echo $slider->status ?></td>
+                    <td><?php echo $slider->created_at ?></td>
+                    <td class="actionCenter">
+                        <a title="Edit" href="{{ route('sliders.edit', $slider->id) }}" class="cus_mini_icon color-success"> <i class="fa fa-pencil-square-o"></i></a>
+
+                        <form action="{{ route('sliders.destroy',$slider->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="cus_mini_icon color-danger"><i class="fa fa-trash "></i></button>
+                        </form>
+                    </td>
+                </tr>
+                </form>
+            @endforeach
+
         </tbody>
         <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th class="actionCenter">Action</th>
             </tr>
         </tfoot>
     </table>

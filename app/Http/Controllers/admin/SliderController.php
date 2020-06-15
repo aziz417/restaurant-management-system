@@ -4,13 +4,16 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Slider;
 
 class SliderController extends Controller
 {
 
     public function index()
     {
-        return view('admin.slider.index');
+        $sliders = Slider::all();
+
+        return view('admin.slider.index', compact('sliders'));
     }
 
     public function create()
@@ -22,12 +25,16 @@ class SliderController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255|unique:sliders',
-            'image' => 'required|mimes,jpeg,png',
+            'image' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
 
         if($request->hasFile('image')){
-            $fileName = 
+            $fileName = $request->image->getClientOriginalName();
+            $request['avatar'] = $fileName;
+            $request->image->storeAs('images', $fileName, 'public');
+            $slider = Slider::create($request->all());
         }
+        return redirect()->route('sliders.index');
         
     }
 
@@ -36,18 +43,24 @@ class SliderController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Slider $slider)
     {
-        //
+        return view('admin.slider.edit', compact('slider'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Slider $slider)
     {
-        //
+            $fileName = $request->image->getClientOriginalName();
+            $request['avatar'] = $fileName;
+            $request->image->storeAs('images', $fileName, 'public');
+            $slider->update($request->all());
+
+            return redirect()->route('sliders.index');
     }
 
-    public function destroy($id)
+    public function destroy(Slider $slider)
     {
-        //
+        $slider->delete();
+        return redirect()->back();
     }
 }
