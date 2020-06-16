@@ -7,8 +7,8 @@
 
     <div class="form-group">
     	<label>Image<span class="required-star"> *</span></label>
-        <input type="file" value="{{isset($slider->image) ? $slider->image:old('image')}}" name="image" class="form-control">
-        @error('image') <span class="help-block m-b-none text-danger">{{ $message }}</span> @enderror
+        <input type="file" value="{{isset($slider->img) ? $slider->img:old('img')}}" name="img" class="form-control">
+        @error('img') <span class="help-block m-b-none text-danger">{{ $message }}</span> @enderror
     </div>
 
     <label>Status</label>

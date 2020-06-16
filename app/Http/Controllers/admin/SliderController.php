@@ -3,11 +3,19 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Helper\ComonController;
 use Illuminate\Http\Request;
 use App\Model\Slider;
 
 class SliderController extends Controller
 {
+    //file handeling work here
+    public $folderName = 'slider';
+    public $fileHandler;
+    function __construct()
+    {
+        $this->fileHandler = new ComonController();
+    }
 
     public function index()
     {
@@ -25,15 +33,23 @@ class SliderController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255|unique:sliders',
-            'image' => 'required|mimes:jpg,jpeg,bmp,png',
+            'img' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
 
-        if($request->hasFile('image')){
-            $fileName = $request->image->getClientOriginalName();
-            $request['avatar'] = $fileName;
-            $request->image->storeAs('images', $fileName, 'public');
-            $slider = Slider::create($request->all());
+        $image = $request->file('img');
+
+       if(isset($image)){
+           
+           //image upload and validation here
+            $validImage = $this->fileHandler->fileUploadedBackend($image, $this->folderName, 'img');       
+
+        if (isset($validImage) != false ){
+            $request['image'] = $validImage;
         }
+
+       }
+
+        Slider::create($request->all());
         return redirect()->route('sliders.index');
         
     }

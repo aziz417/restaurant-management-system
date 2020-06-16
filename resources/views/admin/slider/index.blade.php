@@ -43,7 +43,11 @@
             @foreach($sliders as $slider)
                 <tr>
                     <td><?php echo $slider->title ?></td>
-                    <td><?php echo $slider->avatar ?></td>
+                    <td>
+
+                    <img src="{{  }}">
+                    <?php echo $slider->avatar ?>
+                    </td>
                     <td><?php echo $slider->status ?></td>
                     <td><?php echo $slider->created_at ?></td>
                     <td class="actionCenter">
