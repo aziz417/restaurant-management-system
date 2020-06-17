@@ -32,16 +32,16 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255|unique:sliders',
+            'title' => 'required|max:255',
             'img' => 'required|mimes:jpg,jpeg,bmp,png',
         ]);
 
         $image = $request->file('img');
 
        if(isset($image)){
-           
+
            //image upload and validation here
-            $validImage = $this->fileHandler->fileUploadedBackend($image, $this->folderName, 'img');       
+           $validImage = $this->fileHandler->fileUploadedBackend($image, $this->folderName, 'img');       
 
         if (isset($validImage) != false ){
             $request['image'] = $validImage;
@@ -66,17 +66,40 @@ class SliderController extends Controller
 
     public function update(Request $request, Slider $slider)
     {
-            $fileName = $request->image->getClientOriginalName();
-            $request['avatar'] = $fileName;
-            $request->image->storeAs('images', $fileName, 'public');
-            $slider->update($request->all());
 
-            return redirect()->route('sliders.index');
+        $request->validate([
+            'title' => 'required|max:255',
+            'img' => 'required|mimes:jpg,jpeg,bmp,png',
+        ]);
+
+        $image = $request->file('img');
+
+       if(isset($image)){
+
+           //image upload and validation here
+           $validImage = $this->fileHandler->fileUploadedBackend($image, $this->folderName, 'img');       
+
+        if (isset($validImage) != false ){
+            $this->fileHandler->imageDeleteBackend($request->oldImage, $this->folderName);
+            $request['image'] = $validImage;
+        }
+
+       }
+
+        $slider->update($request->all());
+        return redirect()->route('sliders.index');
+
+            
     }
 
     public function destroy(Slider $slider)
     {
+
+        $validImage = $this->fileHandler->imageDeleteBackend($slider->image, $this->folderName);
+        
         $slider->delete();
+        
+        
         return redirect()->back();
     }
 }

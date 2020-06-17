@@ -44,7 +44,7 @@
                 <tr>
                     <td><?php echo $slider->title ?></td>
                     <td>
-                        <img src="{{asset('admin/uploads_images/slider/'.$slider->image) }}" width="80" height="100">
+                        <img src="{{ asset('admin/uploads_images/slider/'.$slider->image) }}" width="80" height="100">
                     </td>
                     <td><?php echo $slider->status ?></td>
                     <td><?php echo $slider->created_at ?></td>

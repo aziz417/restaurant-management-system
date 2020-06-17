@@ -17,9 +17,7 @@ Route::get('dashboard', function () {
     return view('admin.layouts.master');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Frontend\FrontendController@index');
 
 
 Auth::routes();
