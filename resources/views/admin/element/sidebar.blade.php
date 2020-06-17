@@ -24,10 +24,9 @@
                     <li>
                         <a href="{{ route('sliders.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Slider</span></a>
                     </li>
-                  
-               
+                   
                     <li>
-                        <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
+                        <a href="{{ route('categorys.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categorys</span></a>
                     </li>
                     <li>
                         <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
