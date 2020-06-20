@@ -29,10 +29,9 @@
                         <a href="{{ route('categorys.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categorys</span></a>
                     </li>
                     <li>
-                        <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
+                        <a href="{{ route('items.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Items</span></a>
                     </li>
-                   
-                   
+                
                     <li>
                         <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
                     </li>

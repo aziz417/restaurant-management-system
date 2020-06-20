@@ -32,8 +32,9 @@ class ComonController extends Controller
 
     public function imageDeleteBackend($oldImage,$storeName){
         if($oldImage != ''){
-            file_exists('admin/uploads_images/'.$storeName.'/'.$oldImage);
-            unlink('admin/uploads_images/'.$storeName.'/'.$oldImage);
+            if(file_exists('admin/uploads_images/'.$storeName.'/'.$oldImage)){
+                unlink('admin/uploads_images/'.$storeName.'/'.$oldImage);
+            }
         }
         return 0;
     }
