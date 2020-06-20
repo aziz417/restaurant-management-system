@@ -44,18 +44,17 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-
         $request->validate([
             'name' => 'required|max:255',
         ]);
 
+        $request['slug']  = Str::slug($request->name);
         $category->update($request->all());
         return redirect()->route('categorys.index'); 
     }
 
     public function destroy(Category $category)
     {
-        
         $category->delete();
         return redirect()->back();
     }
