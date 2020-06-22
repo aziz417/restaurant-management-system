@@ -23,6 +23,7 @@ Route::get('/', 'Frontend\FrontendController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::POST('reservation', 'Frontend\ReservationController@reserve')->name('reservation.reserve');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'admin'], function(){
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
