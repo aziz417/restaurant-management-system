@@ -38,7 +38,7 @@ class ItemController extends Controller
             'name' => 'required|max:255',
             'description' => 'required|max:555',
             'price' => 'required',
-            'img' => 'required|mimes:jpg,jpeg,bmp,png',
+            'img' => 'mimes:jpg,jpeg,bmp,png',
         ]);
 
         $image = $request->file('img');
@@ -77,7 +77,7 @@ class ItemController extends Controller
             'name' => 'required|max:255',
             'description' => 'required|max:555',
             'price' => 'required',
-            'img' => 'required|mimes:jpg,jpeg,bmp,png',
+            'img' => 'mimes:jpg,jpeg,bmp,png',
         ]);
 
         $image = $request->file('img');
@@ -94,6 +94,8 @@ class ItemController extends Controller
                 
             }
 
+       }else{
+            $request['image'] = $request->oldImage;
        }
 
         $item->update($request->all());

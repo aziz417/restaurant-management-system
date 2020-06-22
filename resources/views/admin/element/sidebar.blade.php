@@ -26,7 +26,7 @@
                     </li>
                    
                     <li>
-                        <a href="{{ route('categorys.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categorys</span></a>
+                        <a href="{{ route('categorys.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categories</span></a>
                     </li>
                     <li>
                         <a href="{{ route('items.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Items</span></a>

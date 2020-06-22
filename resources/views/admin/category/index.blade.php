@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Categorys')
+@section('title', 'Categories')
 @push('css')
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet">
 @endpush
