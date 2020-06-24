@@ -20,7 +20,9 @@
                             IN+
                         </div>
                     </li>
-                   
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Dashbord</span></a>
+                    </li>
                     <li>
                         <a href="{{ route('sliders.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Slider</span></a>
                     </li>

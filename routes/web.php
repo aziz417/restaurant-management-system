@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'admin
     Route::POST('reservation.status/{id}', 'ReservationController@status')->name('reservation.status');
     Route::delete('reservation.destroy/{id}', 'ReservationController@destroy')->name('reservation.destroy');
     Route::get('contacts/index', 'ContactController@index')->name('contacts.index');
-    Route::get('contact/destroy/{id}', 'ContactController@destroy')->name('contact.destroy');
+    Route::delete('contact/destroy/{id}', 'ContactController@destroy')->name('contact.destroy');
 
 });
 

@@ -45,11 +45,18 @@
                     <td><?php echo $contact->message ?></td>
                     <td><?php echo $contact->created_at ?></td>
                     <td class="actionCenter">
-                        <form action="{{ route('contact.destroy',$contact->id) }}" method="post">
+                        <form id="delete-form-{{ $contact->id }}" action="{{ route('contact.destroy',$contact->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="cus_mini_icon color-danger"><i class="fa fa-trash "></i></button>
                         </form>
+                        <button 
+                        onclick="if( confirm('Are you sure this contact delete?')){
+                            event.preventDefault();
+                            document.getElementById('delete-form-{{ $contact->id }}').submit();
+                            }else{
+                                event.preventDefault();
+                        }" 
+                        type="submit" class="cus_mini_icon color-danger"><i class="fa fa-trash "></i></button>
                     </td>
                 </tr>
             @endforeach
