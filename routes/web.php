@@ -24,6 +24,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::POST('reservation', 'Frontend\ReservationController@reserve')->name('reservation.reserve');
+Route::POST('contact/store', 'ContactController@store')->name('contact.store');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'admin'], function(){
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
