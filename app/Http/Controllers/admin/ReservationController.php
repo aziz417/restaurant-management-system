@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
 
+namespace App\Http\Controllers\Admin;
+use App\Notifications\ReservationConfirm;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use App\Model\Reservation;
 
 class ReservationController extends Controller
@@ -20,6 +22,11 @@ class ReservationController extends Controller
         $reservation = Reservation::find($id);
         $reservation->status = true;
         $reservation->save();
+        Notification::route('mail', $reservation->email)
+        ->route('slack', 'https://hooks.slack.com/services/...')
+        ->notify(new ReservationConfirm());
+
+
         Toastr::success('Reservation status change will be successfully',
          'Success', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
