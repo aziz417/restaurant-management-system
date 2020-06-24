@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="shortcut icon" href="images/star.png" type="favicon/ico" /> -->
+        <link rel="shortcut icon" href="{{ asset('frontend/images/star.png')}}" type="favicon/ico" />
 
         <title>Mamma's Kitchen</title>
 
@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css')}}">
         <link rel="stylesheet" href="{{ asset('frontend/css/pricing.css')}}">
         <link rel="stylesheet" href="{{ asset('frontend/css/main.css')}}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/coustom_style.css')}}">
+        
         <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datetimepicker.min.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
@@ -646,24 +648,28 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name" required="required" placeholder="  &#xf007;  Name">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name"  placeholder="  &#xf007;  Name">
+                                                @error('name') <span class="help-block m-b-none text-danger">{{ $message }}</span> @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email" required="required" placeholder="  &#xf1d8;  e-mail">
+                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email"  placeholder="  &#xf1d8;  e-mail">
+                                                @error('email') <span class="help-block m-b-none text-danger">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone">
+                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" placeholder="  &#xf095;  Phone">
+                                                @error('phone') <span class="help-block m-b-none text-danger">{{ $message }}</span> @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="date_and_time" id="datetimepicker1" required="required" placeholder="&#xf017;  Time">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="date_and_time" id="datetimepicker1"  placeholder="&#xf017;  Time">
+                                                @error('date_and_time') <span class="help-block m-b-none text-danger">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
-                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  We're listening"></textarea>
+                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  We're listening"></textarea>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
