@@ -36,7 +36,7 @@
                     </li>
                 
                     <li>
-                        <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
+                        <a href="{{ route('contacts.index') }}"><i class="fa fa-laptop"></i> <span class="nav-label">Contacts</span></a>
                     </li>
 
                 </ul>
